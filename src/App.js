@@ -1,6 +1,6 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
-import BooksShelf from './BooksShelf.js'
+import BooksShelves from './BooksShelves.js'
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -12,7 +12,7 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false,
-    books: []
+    books: [],
   }
 
   componentDidMount() {
@@ -21,12 +21,21 @@ class BooksApp extends React.Component {
     })
   }
 
+  updateBookShelf = (book, newShelf) => {
+    book.props.book.shelf = newShelf
+    this.setState((state) => ({
+      books: state.books.filter((b) => b.id !== book.id ).concat([book.props.book])
+    }))
+    BooksAPI.update(book, newShelf)
+    alert('updated')
+  }
 
   render() {
     return (
       <div className = "app">
-        <BooksShelf 
+        <BooksShelves 
           books = {this.state.books}
+          onBookShelfChanged = {this.updateBookShelf}
          />
       </div>
     )

@@ -6,7 +6,7 @@ class Book extends Component {
 	state = {
 		shelf: ''
 	}
-	updateBookShelf = (shelf) => {
+	onBookShelfChanged = (shelf) => {
 		this.setState({
 			shelf: shelf
 		})
@@ -15,7 +15,6 @@ class Book extends Component {
 render () {
 
 	const {book, shelf} = this.props
-	//const {shelf} = this.state
 	let SelectedShelf
 	if(this.state.shelf===''){
 		SelectedShelf = shelf
@@ -25,9 +24,10 @@ render () {
 	return (
 		<div className="book">
 			<div className="book-top">
-				<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+				<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
+				</div>
 					<div className="book-shelf-changer">
-                      <select value={SelectedShelf} onChange = {(event) => this.updateBookShelf(event.target.value)}>
+                      <select value={SelectedShelf} onChange = {(event) => this.onBookShelfChanged(event.target.value)}>
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
@@ -36,6 +36,8 @@ render () {
                       </select>
                     </div>
 			</div>
+			 <div className="book-title">{book.title}</div>
+             <div className="book-authors">{[...book.authors].map((auth) => (auth)+', \r\n')}</div>
 		</div>	
 	)
 }

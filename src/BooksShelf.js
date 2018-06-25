@@ -6,53 +6,32 @@ import Book from './Book.js'
 class BooksShelf extends Component {
 
 	state = {
-		mode:'DisplayBooks' //Or  SearchBooks
+		mode:'DisplayBooks', //Or  SearchBooks
+		book: ''
 		
 	}
 
+	
+
 	render() {
 		
-		const {books} = this.props
-		const category = {
-			currentlyReading: 'Currently Reading',
-			wantToRead: 'Want To Read',
-			read: 'Read'
-		}
-
-		return (
-			<div>			
-				<div className="list-books" >
-					<div className="list-books-title">
-						<h1>My Reads</h1>
-					</div>
-				
-					<div className="list-books-content">
-						<div>
-						{ Object.keys(category).map(function(key, index) {
-							const match = new RegExp(escapeRegExp(key))
-							let filteredBooks  = books.filter((bk) => match.test(bk.shelf))
-						 return (
-							<div className="bookshelf" key={index}>
-								<h2 className="bookshelf-title">{category[key]}</h2>
-								<div className="bookshelf-books">
-									<ol className="books-grid">
-										{filteredBooks.map((book) => (
-											<li  key={book.id}>
-												<Book book={book} shelf={key} />
-											</li>
-											))
-										}
-									</ol>
-								</div>
-							</div>)
-						})	
+		const {books, shelfTitle, keyVal, index} = this.props
+	
+		 return (
+			<div className="bookshelf" key={index}>
+				<h2 className="bookshelf-title">{shelfTitle}</h2>
+				<div className="bookshelf-books">
+					<ol className="books-grid">
+						{books.map((book) => (
+							<li  key={book.id}>
+								<Book book={book} shelf={keyVal}  />
+							</li>
+							))
 						}
-						</div>
-					</div>				
-				
-			</div>
-			</div>
-			)
+					</ol>
+				</div>
+			</div>)
+
 	}
 }
 
