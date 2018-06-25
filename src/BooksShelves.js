@@ -1,9 +1,14 @@
 import React, {Component} from 'react'
 import escapeRegExp from 'escape-string-regexp'
 import BooksShelf from './BooksShelf.js'
+import PropTypes from 'prop-types'
 
 
 class BooksShelves extends Component {
+	static propTypes = {
+		books: PropTypes.array.isRequired,
+		onBookShelfChanged: PropTypes.func.isRequired
+	}
 
 	state = {
 		value: ''
@@ -11,11 +16,15 @@ class BooksShelves extends Component {
 
 	render () {
 
-		const {books} = this.props
+		const {books, onBookShelfChanged} = this.props
 		const category = {
 			currentlyReading: 'Currently Reading',
 			wantToRead: 'Want To Read',
 			read: 'Read'
+		}
+
+		let handleBookShelfChanged = (book, shelf) => {
+			onBookShelfChanged(book, shelf)
 		}
 
 		return (
@@ -35,7 +44,9 @@ class BooksShelves extends Component {
 								 		books ={filteredBooks} 
 								 		shelfTitle={category[key]} 
 								 		keyVal={key} 
-								 		index ={index}/>)
+								 		index ={index}
+								 		BookShelfChanged = {handleBookShelfChanged}
+								 		/>)
 							})	
 						}
 						</div>

@@ -1,15 +1,25 @@
 import React, {Component} from 'react'
 import escapeRegExp from 'escape-string-regexp'
+import PropTypes from 'prop-types'
 
 
 class Book extends Component {
+
+	static propTypes = {
+        book: PropTypes.object.isRequired,
+        onBookShelfChanged: PropTypes.func.isRequired
+    }
+
 	state = {
-		shelf: ''
+		shelf: '',
+		book:''
 	}
-	onBookShelfChanged = (shelf) => {
+	onBookShelfChanged = (book, shelf) => {
 		this.setState({
-			shelf: shelf
+			shelf: shelf,
+			book: book
 		})
+		this.props.onBookShelfChanged(book, shelf)
 	}
 
 render () {
@@ -27,7 +37,7 @@ render () {
 				<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
 				</div>
 					<div className="book-shelf-changer">
-                      <select value={SelectedShelf} onChange = {(event) => this.onBookShelfChanged(event.target.value)}>
+                      <select value={SelectedShelf} onChange = {(event) => this.onBookShelfChanged(book, event.target.value)}>
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
