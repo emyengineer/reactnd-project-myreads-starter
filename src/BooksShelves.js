@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import escapeRegExp from 'escape-string-regexp'
 import BooksShelf from './BooksShelf.js'
 import PropTypes from 'prop-types'
-
+import { Link } from 'react-router-dom'
 
 class BooksShelves extends Component {
 	static propTypes = {
@@ -52,7 +52,11 @@ class BooksShelves extends Component {
 						</div>
 					</div>							
 				</div>
+				<div className="open-search">
+              		<Link to="/Search">Add a book</Link>
+          		</div>
 			</div>
+			
 			)
 	}
 
