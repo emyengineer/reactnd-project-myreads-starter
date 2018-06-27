@@ -16,15 +16,13 @@
 
 ##  My Reads App Project
 # Definition
-_Is a project built using **React**, it has two pages:
+_Is a project built using **React**, it has two pages:_
 * _**main page**_ displays list of books and their shelves
         * There are three main book shelves `Currently Reading`,  `Want to Read` and `Read shelf`
         * The user is able to change book shelf 
 * _**Search Page**_ allows to search for books and add them to any shelf as required
-        There are specific searchable terms stated at 
-    `https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md`
-    * the user can search by book title or book author(s)_
-
+        There are specific searchable terms stated at `https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md`
+    * the user can search by book title or book author(s)
 # Project Components:
 * The project has 4 main components
     *  Book.js component
