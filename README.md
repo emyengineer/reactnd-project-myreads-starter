@@ -50,7 +50,7 @@ with all subfolders .
 # Run the project:
 * _**cd**_ to your current project directory 
     run `npm install` and then `npm start ` and here you go :)
-[reactnd-project-myreads-starter](https://emyengineer.github.io/reactnd-project-myreads-starter)
+
 # Contributing
 This code is developed and used search for help on some
 * [REACT Course](https://courses.totalreact.com/p/advanced-react-free) 
