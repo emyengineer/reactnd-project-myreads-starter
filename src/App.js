@@ -30,15 +30,9 @@ class BooksApp extends React.Component {
       books: state.books.filter((b) => b.id !== book.id ).concat([book])
     }))
     BooksAPI.update(book, newShelf)
-    alert('updated')
   }
 
-    searchBooks = (query) => {
-      BooksAPI.search(query).then((books) => {
-        this.setState({books})
-      })
-    }
-
+    
   render() {
     return (
       <div className = "app">
@@ -53,10 +47,9 @@ class BooksApp extends React.Component {
           render = {({history}) => (
             <Search 
               books = {this.state.books}
-              onCreateContact = {(query) => {
-                this.searchBooks(query)
-                history.push('/')
-              }}
+              onBookShelfChanged = {
+                this.updateBookShelf
+              }
               />
         )}/>  
       </div>    

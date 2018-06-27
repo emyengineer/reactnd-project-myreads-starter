@@ -36,18 +36,20 @@ class BooksShelves extends Component {
 				
 					<div className="list-books-content">
 						<div>
-						{ Object.keys(category).map((key, index) => {
-							const match = new RegExp(escapeRegExp(key))
-							let filteredBooks  = books.filter((bk) => match.test(bk.shelf));
+						{ (books !== undefined && books !== null && books.length > 0) && (
+								Object.keys(category).map((key, index) => {
+								const match = new RegExp(escapeRegExp(key))
+								let filteredBooks  = books.filter((bk) => match.test(bk.shelf));
 
-						 	return(	<BooksShelf key = {key} 
-								 		books ={filteredBooks} 
-								 		shelfTitle={category[key]} 
-								 		keyVal={key} 
-								 		index ={index}
-								 		BookShelfChanged = {handleBookShelfChanged}
-								 		/>)
-							})	
+							 	return(	<BooksShelf key = {key} 
+									 		books ={filteredBooks} 
+									 		shelfTitle={category[key]} 
+									 		keyVal={key} 
+									 		index ={index}
+									 		BookShelfChanged = {handleBookShelfChanged}
+									 		/>)
+								})	
+							)
 						}
 						</div>
 					</div>							
