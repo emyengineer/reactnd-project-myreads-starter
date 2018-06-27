@@ -9,7 +9,7 @@
 * [Install](#Install)
 * [Run the project](#Run)
 * [Contributing](#contributing)
-* [Backend Server](#Backend Server)
+* [Backend Server](#BackendServer)
 * [About](#About)
 
 ## Instructions
